@@ -19,7 +19,7 @@ class MotionEnergyComputation():
         wf_report = open (report_file_name, "a")
         if not (file_exists):
             wf_report.write ("This file shows errors that happen in"+ str(c)+" Class\n")
-        wf_report.write ("Frame number is: "+str(current_frame_coordinat.frame_n)+"\n")
+        wf_report.write ("Frame number is: "+str(current_frame_coordinat.frame_n)+" ,")
 
 
         # define the max between xs.Then, I will have largest coordinates

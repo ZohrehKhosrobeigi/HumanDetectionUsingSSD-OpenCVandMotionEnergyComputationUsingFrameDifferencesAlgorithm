@@ -64,8 +64,12 @@ class VideoCapturing():
                 print(current_frame_counts_persons_ME_comput.label)
                 current_frame_counts_persons_ME_comput.label="000"
             cv2.imshow (current_frame_counts_persons_ME_comput.label, motion_computation.roi_max_current)
+            cv2.waitKey (1000)
+            cv2.destroyAllWindows ()
             if cv2.waitKey (1) & 0xFF == ord ('q'):
                 break
+
+
 
         cap.release ()
         cv2.destroyAllWindows ()
