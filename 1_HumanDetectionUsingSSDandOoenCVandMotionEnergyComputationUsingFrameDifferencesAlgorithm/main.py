@@ -1,6 +1,8 @@
 #This code detect persons in the video, crops the person.
 # Then motion energy of the video is computed.
 # Also, ROI coordinates are saved in a csv file
+
+#For Video P029 please uncomment some lines in HumanDetectionSSD
 import Video_Capturing
 import Importing_all_files_in_list_1
 import GetName

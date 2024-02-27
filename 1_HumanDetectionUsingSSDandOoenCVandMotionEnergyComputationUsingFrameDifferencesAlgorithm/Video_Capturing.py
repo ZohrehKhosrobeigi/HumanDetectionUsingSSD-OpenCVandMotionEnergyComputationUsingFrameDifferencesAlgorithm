@@ -37,9 +37,10 @@ class VideoCapturing():
         #   Calling this class to check the counts of persons detected and counts of boxes for each player. It is a kind of preprocessing
         prev_frame_counts_persons_ME_comput=CountsOfPersons4MEComputation.CountsOfPersons4MEComputation()
         prev_frame_counts_persons_ME_comput.countsOfPersons4MEComputation(prev_frame, get_box_human, frame_n,report_folder)  #I do not show the first frame in the video but use it as previouse frame to substract this from the current one
-        frame_n += 1
         #### Proccesing rest of the frames, frames id >1
         while True:
+            frame_n += 1
+
             ret, current_frame = cap.read ()
             if not ret:
                 break
@@ -51,7 +52,6 @@ class VideoCapturing():
             current_frame_counts_persons_ME_comput = CountsOfPersons4MEComputation.CountsOfPersons4MEComputation ()
             current_frame_counts_persons_ME_comput.countsOfPersons4MEComputation (current_frame, get_box_human, frame_n,report_folder)
 
-            frame_n += 1
 
             #   Motion Energy Computation
 
@@ -60,14 +60,14 @@ class VideoCapturing():
             prev_frame_counts_persons_ME_comput=current_frame_counts_persons_ME_comput#keeping current roi_frame as prevouse one to subtract from next frame
 
 
-            if current_frame_counts_persons_ME_comput.label==0:# WHEN THERE IS NO DETECTION, AVOID HAVEING ERROR TO SHOW THE VIDEO
-                print(current_frame_counts_persons_ME_comput.label)
-                current_frame_counts_persons_ME_comput.label="000"
-            cv2.imshow (current_frame_counts_persons_ME_comput.label, motion_computation.roi_max_current)
-            cv2.waitKey (1000)
-            cv2.destroyAllWindows ()
-            if cv2.waitKey (1) & 0xFF == ord ('q'):
-                break
+            # if current_frame_counts_persons_ME_comput.label==0:# WHEN THERE IS NO DETECTION, AVOID HAVEING ERROR TO SHOW THE VIDEO
+            #     print(current_frame_counts_persons_ME_comput.label)
+            #     current_frame_counts_persons_ME_comput.label="000"
+            # cv2.imshow (current_frame_counts_persons_ME_comput.label, motion_computation.roi_max_current)
+            # cv2.waitKey (1000)
+            # cv2.destroyAllWindows ()
+            # if cv2.waitKey (1) & 0xFF == ord ('q'):
+            #     break
 
 
 
